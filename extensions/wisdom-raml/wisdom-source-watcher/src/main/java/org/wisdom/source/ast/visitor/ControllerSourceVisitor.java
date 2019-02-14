@@ -69,7 +69,7 @@ public final class ControllerSourceVisitor extends VoidVisitorAdapter<Controller
      */
     @Override
     public void visit(ClassOrInterfaceDeclaration declaration, ControllerModel controller) {
-        controller.setName(declaration.getName());
+        controller.setName(declaration.getJavaDoc().getName());
 
         LOGGER.info("[controller]Visit " + controller.getName());
         //Go on with the methods and annotations
