@@ -65,20 +65,20 @@ public interface Crud<T, I extends Serializable> {
      * @param t the instance
      * @return the entity instance, may be the same as the parameter t but can also be different
      */
-    T delete(T t);
+    T delete(T t) throws HasBeenRollBackException;
 
     /**
      * Deletes the given entity instance (specified by its id). The instance is removed from the persistent layer.
      * @param id the id
      */
-    void delete(I id);
+    void delete(I id) throws HasBeenRollBackException;
 
     /**
      * Deletes the given entity instances. The instances are removed from the persistent layer.
      * @param entities the entities to remove from the persistent layer
      * @return the set of entity instances
      */
-    Iterable<T> delete(Iterable<T> entities);
+    Iterable<T> delete(Iterable<T> entities) throws HasBeenRollBackException;
 
     /**
      * Saves a given entity. Use the returned instance for further operations as the operation might have
@@ -88,7 +88,7 @@ public interface Crud<T, I extends Serializable> {
      * @param t the instance to save
      * @return the saved entity
      */
-    T save(T t);
+    T save(T t) throws HasBeenRollBackException;
 
     /**
      * Saves all given entities. Use the returned instances for further operations as the operation might have
@@ -96,41 +96,41 @@ public interface Crud<T, I extends Serializable> {
      * @param entities the entities to save, must not contains {@literal null} values
      * @return the saved entities
      */
-    Iterable<T> save(Iterable<T> entities);
+    Iterable<T> save(Iterable<T> entities) throws HasBeenRollBackException;
 
     /**
      * Retrieves an entity by its id.
      * @param id the id, must not be null
      * @return the entity instance, {@literal null} if there are no entities matching the given id.
      */
-    T findOne(I id);
+    T findOne(I id) throws HasBeenRollBackException;
 
     /**
      * Retrieves the entity matching the given filter. If several entities matches, the first is returned.
      * @param filter the filter
      * @return the first matching instance, {@literal null} if none
      */
-    T findOne(EntityFilter<T> filter);
+    T findOne(EntityFilter<T> filter) throws HasBeenRollBackException;
 
     /**
      * Checks whether an entity instance with the given id exists, i.e. has been saved and is persisted.
      * @param id the id, must not be null
      * @return {@literal true} if an entity with the given id exists, {@literal false} otherwise.
      */
-    boolean exists(I id);
+    boolean exists(I id) throws HasBeenRollBackException;
 
     /**
      * Returns all instances of the entity.
      * @return the instances, empty if none.
      */
-    Iterable<T> findAll();
+    Iterable<T> findAll() throws HasBeenRollBackException;
 
     /**
      * Returns all instances of the type with the given IDs.
      * @param ids the ids.
      * @return the instances, empty if none.
      */
-    Iterable<T> findAll(Iterable<I> ids);
+    Iterable<T> findAll(Iterable<I> ids) throws HasBeenRollBackException;
 
     /**
      * Retrieves the entities matching the given filter.
@@ -138,13 +138,13 @@ public interface Crud<T, I extends Serializable> {
      * @param filter the filter
      * @return the matching instances, empty if none.
      */
-    Iterable<T> findAll(EntityFilter<T> filter);
+    Iterable<T> findAll(EntityFilter<T> filter) throws HasBeenRollBackException;
 
     /**
      * Gets the number of stored instances.
      * @return the number of stored instances, 0 if none.
      */
-    long count();
+    long count() throws HasBeenRollBackException;
 
     /**
      * Gets the repository storing the instances of this entity.
