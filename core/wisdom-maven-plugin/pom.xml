@@ -7,12 +7,12 @@
     <parent>
         <groupId>org.wisdom-framework</groupId>
         <artifactId>wisdom-framework</artifactId>
-        <version>0.10.1-SNAPSHOT</version>
+        <version>0.10.1-UBIDREAMS</version>
         <relativePath>../../pom.xml</relativePath>
     </parent>
 
     <artifactId>wisdom-maven-plugin</artifactId>
-    <version>0.10.1-SNAPSHOT</version>
+    <version>0.10.1-UBIDREAMS</version>
 
     <packaging>maven-plugin</packaging>
 
